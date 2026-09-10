@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orgullo y Memoria</title>
+<meta name="description" content="Canal de YouTube Orgullo y Memoria. Proyecto de la Técnica en Integración de Contenidos Digitales, SENA — Institución Educativa La Divina Pastora.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/estilos.css">
+<link rel="icon" href="assets/img/logo-proyecto.svg" type="image/svg+xml">
+
+<!-- Respaldos: solo se usan si el navegador no puede leer los .json
+     (por ejemplo al abrir el index.html con doble clic). -->
+<script src="secciones/configuracion/configuracion.respaldo.js"></script>
+<script src="secciones/quienes-somos/quienes-somos.respaldo.js"></script>
+<script src="secciones/videos/videos.respaldo.js"></script>
+<script src="secciones/galeria/galeria.respaldo.js"></script>
+</head>
+<body>
+
+<a class="salto-contenido" href="#contenido">Ir al contenido</a>
+
+<header class="cabecera">
+  <div class="cabecera__interior">
+    <a class="marca" href="#inicio">
+      <img class="marca__logo" src="assets/img/logo-proyecto.svg" alt="Logo de Orgullo y Memoria" id="logo-cabecera">
+      <span class="marca__texto">
+        <strong id="marca-nombre">Orgullo y Memoria</strong>
+        <small id="marca-lema">Archivo audiovisual estudiantil</small>
+      </span>
+    </a>
+
+    <button class="menu-boton" id="menu-boton" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+      <span class="visualmente-oculto">Abrir menú</span>
+    </button>
+
+    <nav class="menu" id="menu" aria-label="Secciones del sitio">
+      <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#videos">Videos</a>
+      <a href="#galeria">Galería</a>
+      <a class="menu__cta" id="menu-canal" href="#" target="_blank" rel="noopener">Ver el canal</a>
+    </nav>
+  </div>
+  <div class="tricolor" aria-hidden="true"></div>
+</header>
+
+<main id="contenido">
+
+  <!-- ============ PORTADA ============ -->
+  <section class="portada" id="inicio">
+    <div class="portada__interior">
+      <p class="etiqueta">Institución Educativa La Divina Pastora &middot; SENA</p>
+
+      <h1 class="portada__titulo">
+        <span class="portada__linea1">Orgullo</span>
+        <span class="portada__conector">y</span>
+        <span class="portada__linea2">Memoria</span>
+      </h1>
+
+      <div class="tricolor tricolor--ancho" aria-hidden="true"></div>
+
+      <p class="portada__texto" id="portada-texto">
+        Contamos las historias que sostienen a nuestra comunidad.
+      </p>
+
+      <div class="portada__acciones">
+        <a class="boton boton--principal" id="portada-canal" href="#" target="_blank" rel="noopener">Suscríbete al canal</a>
+        <a class="boton boton--secundario" href="#videos">Ver los videos</a>
+      </div>
+
+      <div class="portada__creditos">
+        <img id="escudo-colegio" src="assets/img/escudo-colegio.svg" alt="Escudo de la Institución Educativa La Divina Pastora">
+        <img id="logo-sena" src="assets/img/logo-sena.svg" alt="Logo del SENA">
+        <p id="portada-ficha">Técnica en Integración de Contenidos Digitales</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUIÉNES SOMOS ============ -->
+  <section class="seccion seccion--azul" id="quienes-somos">
+    <div class="contenedor">
+      <p class="etiqueta">Expediente 01</p>
+      <h2 class="titulo-seccion">Quiénes somos</h2>
+      <p class="entrada" id="quienes-intro"></p>
+
+      <div class="proposito" id="proposito"></div>
+
+      <h3 class="subtitulo">El equipo</h3>
+      <div class="rejilla-equipo" id="rejilla-equipo">
+        <p class="cargando">Cargando el equipo…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VIDEOS ============ -->
+  <section class="seccion seccion--papel" id="videos">
+    <div class="contenedor">
+      <p class="etiqueta">Expediente 02</p>
+      <h2 class="titulo-seccion">Videos</h2>
+      <p class="entrada" id="videos-intro"></p>
+
+      <div class="rejilla-videos" id="rejilla-videos">
+        <p class="cargando">Cargando los videos…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALERÍA ============ -->
+  <section class="seccion seccion--noche" id="galeria">
+    <div class="contenedor">
+      <p class="etiqueta">Expediente 03</p>
+      <h2 class="titulo-seccion">Detrás de cámaras</h2>
+      <p class="entrada" id="galeria-intro"></p>
+
+      <div class="rejilla-galeria" id="rejilla-galeria">
+        <p class="cargando">Cargando la galería…</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ PIE DE PÁGINA ============ -->
+<footer class="pie">
+  <div class="tricolor" aria-hidden="true"></div>
+  <div class="contenedor pie__interior">
+
+    <div class="pie__marca">
+      <img id="logo-pie" src="assets/img/logo-proyecto.svg" alt="Logo de Orgullo y Memoria">
+      <p id="pie-descripcion"></p>
+    </div>
+
+    <div class="pie__redes">
+      <h2 class="pie__titulo">Síguenos</h2>
+      <ul id="lista-redes" class="redes"></ul>
+    </div>
+
+    <div class="pie__institucional">
+      <h2 class="pie__titulo">Un proyecto de</h2>
+      <p id="pie-institucion"></p>
+      <div class="pie__logos">
+        <img id="escudo-colegio-pie" src="assets/img/escudo-colegio.svg" alt="Escudo de la Institución Educativa La Divina Pastora">
+        <img id="logo-sena-pie" src="assets/img/logo-sena.svg" alt="Logo del SENA">
+      </div>
+    </div>
+
+  </div>
+  <p class="pie__legal" id="pie-legal"></p>
+</footer>
+
+<!-- Visor de fotos de la galería -->
+<div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+  <button class="visor__cerrar" id="visor-cerrar" aria-label="Cerrar la foto">&times;</button>
+  <button class="visor__flecha visor__flecha--previa" id="visor-previa" aria-label="Foto anterior">&#8249;</button>
+  <figure class="visor__figura">
+    <img id="visor-imagen" src="" alt="">
+    <figcaption id="visor-pie"></figcaption>
+  </figure>
+  <button class="visor__flecha visor__flecha--siguiente" id="visor-siguiente" aria-label="Foto siguiente">&#8250;</button>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
