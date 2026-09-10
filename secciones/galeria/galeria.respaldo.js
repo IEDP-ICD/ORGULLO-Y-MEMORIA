@@ -33,6 +33,10 @@ window.RESPALDO.galeria = {
       "titulo": "Equipo completo",
       "descripcion": "Cierre de la jornada de grabación.",
       "imagen": "secciones/galeria/fotos/ejemplo-6.svg"
+    },
+    {
+      "titulo": "Edición y diseño web",
+      "imagen": "secciones/galeria/fotos/edicion-diseno-web.jpg"
     }
   ]
 };
