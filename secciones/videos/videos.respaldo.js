@@ -2,7 +2,7 @@
    Copia de videos.json para cuando el sitio se abre con doble clic. */
 window.RESPALDO = window.RESPALDO || {};
 window.RESPALDO.videos = {
-  "introduccion": "Cada tarjeta abre el video directamente en YouTube. Para agregar uno nuevo solo copia el ID que aparece en la dirección del video (la parte después de v=) y pégalo en \"video\".",
+  "introduccion": "",
   "videos": [
     {
       "titulo": "El primer timbre",
