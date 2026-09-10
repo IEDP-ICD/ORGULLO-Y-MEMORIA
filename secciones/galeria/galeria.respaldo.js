@@ -1,0 +1,38 @@
+/* Generado por herramientas/generar-respaldo.mjs — NO editar a mano.
+   Copia de galeria.json para cuando el sitio se abre con doble clic. */
+window.RESPALDO = window.RESPALDO || {};
+window.RESPALDO.galeria = {
+  "introduccion": "Lo que no se ve en el video: los montajes, las pruebas de sonido, los ensayos y los días de grabación.",
+  "fotos": [
+    {
+      "titulo": "Montaje de luces en el aula",
+      "descripcion": "Prueba de iluminación antes de la primera entrevista.",
+      "imagen": "secciones/galeria/fotos/ejemplo-1.svg"
+    },
+    {
+      "titulo": "Prueba de sonido",
+      "descripcion": "Ajustando el micrófono de solapa en el patio.",
+      "imagen": "secciones/galeria/fotos/ejemplo-2.svg"
+    },
+    {
+      "titulo": "Grabación en la plaza",
+      "descripcion": "Tomas de apoyo un domingo de mercado.",
+      "imagen": "secciones/galeria/fotos/ejemplo-3.svg"
+    },
+    {
+      "titulo": "Revisión del guion",
+      "descripcion": "Últimos ajustes antes de rodar.",
+      "imagen": "secciones/galeria/fotos/ejemplo-4.svg"
+    },
+    {
+      "titulo": "Sala de edición",
+      "descripcion": "Montaje del primer corte en la sala de sistemas.",
+      "imagen": "secciones/galeria/fotos/ejemplo-5.svg"
+    },
+    {
+      "titulo": "Equipo completo",
+      "descripcion": "Cierre de la jornada de grabación.",
+      "imagen": "secciones/galeria/fotos/ejemplo-6.svg"
+    }
+  ]
+};

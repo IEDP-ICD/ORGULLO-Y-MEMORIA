@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="GRABACION EN PLAZA">
+  <rect width="800" height="600" fill="#062A4C"/>
+  <g opacity=".2" fill="#EDE4D2">
+    <circle cx="330" cy="210" r="52"/>
+    <rect x="0" y="210" width="800" height="2"/>
+  </g>
+  <rect x="0" y="576" width="400" height="24" fill="#FCD116"/>
+  <rect x="400" y="576" width="200" height="24" fill="#003893"/>
+  <rect x="600" y="576" width="200" height="24" fill="#CE1126"/>
+  <text x="400" y="300" fill="#EDE4D2" font-family="Arial, sans-serif" font-size="30"
+        text-anchor="middle" letter-spacing="3" opacity=".9">GRABACION EN PLAZA</text>
+  <text x="400" y="340" fill="#FCD116" font-family="Arial, sans-serif" font-size="18"
+        text-anchor="middle" letter-spacing="4">FOTO DE EJEMPLO</text>
+</svg>

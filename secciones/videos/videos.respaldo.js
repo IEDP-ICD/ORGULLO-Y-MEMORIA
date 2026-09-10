@@ -1,0 +1,26 @@
+/* Generado por herramientas/generar-respaldo.mjs — NO editar a mano.
+   Copia de videos.json para cuando el sitio se abre con doble clic. */
+window.RESPALDO = window.RESPALDO || {};
+window.RESPALDO.videos = {
+  "introduccion": "Cada tarjeta abre el video directamente en YouTube. Para agregar uno nuevo solo copia el ID que aparece en la dirección del video (la parte después de v=) y pégalo en \"video\".",
+  "videos": [
+    {
+      "titulo": "El primer timbre",
+      "descripcion": "Tres egresados vuelven al salón donde estudiaron y cuentan cómo era el colegio hace treinta años.",
+      "video": "PEGA_AQUI_EL_ID",
+      "miniatura": "secciones/videos/miniatura-ejemplo-1.svg"
+    },
+    {
+      "titulo": "Manos que aún trabajan",
+      "descripcion": "Retrato de los oficios tradicionales que siguen vivos a pocas cuadras de la institución.",
+      "video": "PEGA_AQUI_EL_ID",
+      "miniatura": "secciones/videos/miniatura-ejemplo-2.svg"
+    },
+    {
+      "titulo": "La fiesta del pueblo",
+      "descripcion": "Cubrimos las fiestas patronales desde adentro: los preparativos, la banda y la gente que las sostiene.",
+      "video": "PEGA_AQUI_EL_ID",
+      "miniatura": "secciones/videos/miniatura-ejemplo-3.svg"
+    }
+  ]
+};

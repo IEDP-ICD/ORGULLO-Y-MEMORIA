@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="Imagen pendiente">
+  <rect width="640" height="480" fill="#04182E"/>
+  <rect y="0" width="640" height="10" fill="#FCD116"/>
+  <rect y="10" width="640" height="5" fill="#003893"/>
+  <rect y="15" width="640" height="5" fill="#CE1126"/>
+  <g fill="none" stroke="#EDE4D2" stroke-width="9" opacity=".55">
+    <rect x="238" y="196" width="120" height="88" rx="10"/>
+    <path d="M368 220l40-24v88l-40-24z"/>
+    <circle cx="298" cy="240" r="24"/>
+  </g>
+  <text x="320" y="340" fill="#EDE4D2" font-family="Arial, sans-serif" font-size="24"
+        text-anchor="middle" opacity=".8">Imagen pendiente</text>
+</svg>

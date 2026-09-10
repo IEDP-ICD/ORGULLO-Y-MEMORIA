@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="120" height="140" role="img" aria-label="Escudo del colegio">
+  <path d="M10 8h100v78c0 26-30 40-50 46C40 126 10 112 10 86Z" fill="#EDE4D2" stroke="#003893" stroke-width="5"/>
+  <path d="M10 8h100v26H10Z" fill="#003893"/>
+  <text x="60" y="27" fill="#EDE4D2" font-family="Arial, sans-serif" font-size="11"
+        text-anchor="middle" letter-spacing="1">ESCUDO</text>
+  <text x="60" y="62" fill="#003893" font-family="Arial, sans-serif" font-size="11"
+        text-anchor="middle" font-weight="bold">LA DIVINA</text>
+  <text x="60" y="78" fill="#003893" font-family="Arial, sans-serif" font-size="11"
+        text-anchor="middle" font-weight="bold">PASTORA</text>
+  <text x="60" y="102" fill="#CE1126" font-family="Arial, sans-serif" font-size="8"
+        text-anchor="middle">reemplazar</text>
+</svg>
