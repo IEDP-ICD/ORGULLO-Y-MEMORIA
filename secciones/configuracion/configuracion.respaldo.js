@@ -16,7 +16,7 @@ window.RESPALDO.configuracion = {
   "altLogoSena": "Logo del SENA",
   "redes": {
     "youtube": "@orgulloymemoria",
-    "instagram": "@orgulloymemoria",
-    "twitter": "@orgulloymemoria"
+    "instagram": "",
+    "twitter": ""
   }
 };

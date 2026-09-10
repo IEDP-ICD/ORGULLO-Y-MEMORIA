@@ -3,8 +3,8 @@
 window.RESPALDO = window.RESPALDO || {};
 window.RESPALDO.quienesSomos = {
   "introduccion": "Somos dos estudiantes de la Técnica en Integración de Contenidos Digitales. Grabamos, editamos y publicamos historias de nuestra región con los equipos del colegio y lo aprendido en la formación con el SENA.",
-  "mision": "Registrar y divulgar en formato audiovisual las historias, oficios y tradiciones de nuestra comunidad educativa y de nuestro municipio, usando las herramientas digitales aprendidas en la técnica, para que ese patrimonio quede al alcance de cualquiera.",
-  "vision": "Para 2028 queremos ser el archivo audiovisual de referencia de la Institución Educativa La Divina Pastora: una colección abierta de testimonios y documentales cortos que otros estudiantes puedan seguir alimentando cada año.",
+  "mision": "Crear contenidos digitales innovadores de historia y ciencias sociales para despertar el interés estudiantil, fortalecer competencias digitales y difundir la memoria colectiva en redes.",
+  "vision": "Ser el referente educativo digital donde los estudiantes crean, comparten y viven la historia con pasión, orgullo identitario y pensamiento crítico, consolidando una memoria colectiva viva y accesible.",
   "integrantes": [
     {
       "nombre": "Paula Castellanos",
