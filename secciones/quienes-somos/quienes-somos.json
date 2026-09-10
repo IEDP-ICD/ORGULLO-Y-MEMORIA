@@ -9,13 +9,13 @@
     {
       "nombre": "Paula Castellanos",
       "rol": "Dirección y guion",
-      "foto": "secciones/quienes-somos/fotos/paula.svg",
+      "foto": "secciones/quienes-somos/fotos/paula.jpg",
       "descripcion": "Investiga las historias, contacta a las personas que entrevistamos y escribe el guion de cada episodio. También conduce las entrevistas frente a cámara."
     },
     {
       "nombre": "Stiven León Pacheco",
       "rol": "Cámara y edición",
-      "foto": "secciones/quienes-somos/fotos/stiven.svg",
+      "foto": "secciones/quienes-somos/fotos/stiven.jpg",
       "descripcion": "Se encarga de la fotografía, el sonido y el montaje final. Arma el color, los títulos y la música de cada video antes de publicarlo."
     }
   ]

@@ -9,10 +9,10 @@ window.RESPALDO.configuracion = {
   "ficha": "Técnica en Integración de Contenidos Digitales · SENA",
   "institucion": "Institución Educativa La Divina Pastora, en convenio con el Servicio Nacional de Aprendizaje (SENA).",
   "legal": "© 2026 Orgullo y Memoria · Paula Castellanos y Stiven León Pacheco · Institución Educativa La Divina Pastora",
-  "logoProyecto": "assets/img/logo-proyecto.svg",
-  "escudoColegio": "assets/img/escudo-colegio.svg",
+  "logoProyecto": "assets/img/logo-proyecto.png",
+  "escudoColegio": "assets/img/escudo-colegio.png",
   "altEscudoColegio": "Escudo de la Institución Educativa La Divina Pastora",
-  "logoSena": "assets/img/logo-sena.svg",
+  "logoSena": "assets/img/logo-sena.png",
   "altLogoSena": "Logo del SENA",
   "redes": {
     "youtube": "@orgulloymemoria",

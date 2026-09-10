@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="Foto de Stiven">
-  <rect width="300" height="300" fill="#003893"/>
-  <circle cx="150" cy="120" r="52" fill="#EDE4D2" opacity=".9"/>
-  <path d="M52 300c0-56 44-96 98-96s98 40 98 96Z" fill="#EDE4D2" opacity=".9"/>
-  <rect y="0" width="300" height="9" fill="#FCD116"/>
-  <text x="150" y="136" fill="#003893" font-family="Arial Black, Arial, sans-serif" font-size="44"
-        font-weight="900" text-anchor="middle">SL</text>
-</svg>
