@@ -191,7 +191,7 @@
         '<div class="video__marco">' +
           '<img src="' + miniatura(video) + '" alt="Miniatura del video: ' + (video.titulo || '') + '" loading="lazy" ' +
           'onerror="this.onerror=function(){this.onerror=null;this.src=\'' + MARCADOR + '\'};this.src=\'' + alterna + '\'">' +
-          '<span class="video__codigo">' + codigo('OM', i) + '</span>' +
+          '<span class="video__codigo">' + codigo('VID', i) + '</span>' +
           '<span class="video__play" aria-hidden="true"><span></span></span>' +
         '</div>' +
         '<div class="video__cuerpo">' +
