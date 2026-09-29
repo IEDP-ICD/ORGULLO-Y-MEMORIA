@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  SUSTENTACIÓN DEL PROYECTO — ORGULLO Y MEMORIA                ║
+  ║  Página autocontenida, no enlazada desde el sitio principal.  ║
+  ║  Accesible solo escribiendo la URL: /sustentacion/            ║
+  ║  No aparece en el menú ni en buscadores (ver robots.txt).     ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Sustentación · Orgullo y Memoria</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══ Paleta idéntica a la del sitio principal (bandera de Colombia) ═══ */
+    :root {
+      --amarillo: #FCD116;
+      --azul:     #003893;
+      --rojo:     #CE1126;
+
+      --noche:    #04182E;
+      --noche-2:  #08243F;
+      --noche-3:  #0d3157;
+      --papel:    #EDE4D2;
+      --papel-70: rgba(237, 228, 210, .72);
+      --tinta:    #101418;
+      --blanco:   #FFFFFF;
+
+      --borde:    rgba(252, 209, 22, .18);
+      --sombra:   0 24px 60px rgba(4, 24, 46, .5);
+      --radio:    1.1rem;
+      --fuente-display: "Archivo Black", system-ui, sans-serif;
+      --fuente-cuerpo:  "Source Serif 4", Georgia, serif;
+      --fuente-util:    "Archivo", system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--noche);
+      font-family: var(--fuente-cuerpo);
+      color: var(--papel);
+    }
+
+    body {
+      background:
+        radial-gradient(900px 420px at 12% 0%, rgba(0, 56, 147, .5), transparent 70%),
+        radial-gradient(700px 420px at 92% 20%, rgba(206, 17, 38, .22), transparent 70%),
+        var(--noche);
+    }
+
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    img { max-width: 100%; display: block; }
+
+    /* ═══ Decorativos ═══ */
+    .rec-dot {
+      width: .55rem; height: .55rem;
+      border-radius: 50%;
+      background: var(--rojo);
+      box-shadow: 0 0 12px var(--rojo);
+      animation: parpadeo 1.6s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes parpadeo { 50% { opacity: .25; } }
+
+    .glow {
+      position: fixed;
+      top: -15%; right: -8%;
+      width: 55vw; height: 55vw;
+      max-width: 750px; max-height: 750px;
+      background: radial-gradient(circle, rgba(252, 209, 22, .12), transparent 65%);
+      filter: blur(20px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ═══ Deck ═══ */
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100svh;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: clamp(3.6rem, 9vh, 5.2rem) clamp(1.2rem, 4vw, 4rem) clamp(4.2rem, 10vh, 5.6rem);
+      opacity: 0;
+      transform: translateX(60px) scale(0.97);
+      pointer-events: none;
+      transition: transform 0.7s cubic-bezier(0.34, 1.1, 0.64, 1), opacity 0.5s ease;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .slide.activa {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+      z-index: 2;
+    }
+    .slide.saliendo-izq { transform: translateX(-70px) scale(0.97); opacity: 0; }
+    .slide.saliendo-der { transform: translateX(70px) scale(0.97); opacity: 0; }
+
+    .slide-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1800px;
+      max-height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: clamp(.65rem, 2vh, 1.4rem);
+    }
+
+    .deco-icon {
+      position: absolute;
+      opacity: .14;
+      pointer-events: none;
+      z-index: 0;
+      font-size: clamp(1.8rem, 4.4vh, 3.2rem);
+      animation: flotar 7s ease-in-out infinite;
+    }
+
+    .slide-inner > * {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1);
+    }
+    .slide.activa .slide-inner > *  { opacity: 1; transform: translateY(0); }
+    .slide.activa .slide-inner > *:nth-child(1) { transition-delay: 0.05s; }
+    .slide.activa .slide-inner > *:nth-child(2) { transition-delay: 0.13s; }
+    .slide.activa .slide-inner > *:nth-child(3) { transition-delay: 0.21s; }
+    .slide.activa .slide-inner > *:nth-child(4) { transition-delay: 0.29s; }
+    .slide.activa .slide-inner > *:nth-child(5) { transition-delay: 0.37s; }
+
+    /* ═══ Tipografía ═══ */
+    .eyebrow {
+      font-family: var(--fuente-util);
+      font-size: clamp(1.05rem, 2.5vh, 1.4rem);
+      font-weight: 700;
+      letter-spacing: .16em;
+      color: var(--amarillo);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .slide h2 {
+      font-family: var(--fuente-display);
+      text-transform: uppercase;
+      font-size: clamp(2.3rem, 8vh, 4.6rem);
+      line-height: 1.04;
+      color: var(--blanco);
+      letter-spacing: -.01em;
+    }
+    .slide h2 em { font-style: normal; color: transparent; background: linear-gradient(120deg, var(--rojo), var(--amarillo)); -webkit-background-clip: text; background-clip: text; }
+
+    .lead {
+      font-size: clamp(1.3rem, 3.2vh, 1.85rem);
+      color: var(--papel-70);
+      line-height: 1.5;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Ficha: tarjeta con el lomo tricolor del sitio */
+    .tarjeta {
+      position: relative;
+      background: linear-gradient(160deg, var(--noche-2), var(--noche-3));
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      padding: clamp(1rem, 2.6vh, 1.8rem) clamp(1.2rem, 2.6vw, 2rem) clamp(1rem, 2.6vh, 1.8rem) clamp(1.7rem, 3.2vw, 2.5rem);
+      box-shadow: var(--sombra);
+      overflow: hidden;
+    }
+    .tarjeta::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 7px;
+      background: linear-gradient(to bottom, var(--amarillo) 0 50%, var(--azul) 50% 75%, var(--rojo) 75% 100%);
+    }
+    .tarjeta p { font-size: clamp(1.2rem, 2.8vh, 1.6rem); color: var(--papel-70); line-height: 1.5; }
+    .tarjeta h3 {
+      font-family: var(--fuente-display);
+      text-transform: uppercase;
+      color: var(--amarillo);
+      font-size: clamp(1.3rem, 3.4vh, 1.8rem);
+      margin-bottom: clamp(.3rem, 1vh, .6rem);
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+    }
+
+    /* ═══ Slide 1: portada ═══ */
+    .portada { text-align: center; align-items: center; }
+    .portada-logo-wrap { position: relative; display: grid; place-items: center; margin: 0 auto clamp(.3rem, 1vh, .6rem); }
+    .portada-ring {
+      position: absolute;
+      width: clamp(150px, 26vh, 250px); aspect-ratio: 1; border-radius: 50%;
+      border: 1px dashed rgba(252, 209, 22, .35);
+      animation: girar 40s linear infinite;
+    }
+    @keyframes girar { to { transform: rotate(360deg); } }
+    .portada-logo {
+      width: clamp(118px, 20vh, 195px); height: clamp(118px, 20vh, 195px);
+      border-radius: 50%; object-fit: contain; background: var(--noche-2);
+      box-shadow: 0 0 0 6px rgba(252,209,22,.25), 0 0 60px rgba(206,17,38,.35), var(--sombra);
+      animation: flotar 6s ease-in-out infinite;
+    }
+    @keyframes flotar { 50% { transform: translateY(-10px); } }
+    .portada-titulo {
+      font-family: var(--fuente-display);
+      text-transform: uppercase;
+      line-height: .92;
+      font-size: clamp(3rem, 10.5vh, 6.2rem);
+      letter-spacing: -.01em;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .portada-titulo .linea { display: block; color: var(--blanco); }
+    .portada-titulo .linea.acento { color: var(--amarillo); }
+    .portada-titulo .conector {
+      display: block; font-family: var(--fuente-cuerpo); font-style: italic;
+      font-weight: 400; text-transform: lowercase;
+      font-size: clamp(1.1rem, 3.4vh, 1.9rem);
+      color: var(--rojo); line-height: 1; margin: .2rem 0;
+    }
+    .portada .subt { font-size: clamp(1.4rem, 3.2vh, 1.9rem); color: var(--papel-70); max-width: 44rem; margin: 0 auto; }
+    .portada-footer { font-family: var(--fuente-util); font-size: clamp(.9rem, 1.9vh, 1.1rem); letter-spacing: .04em; color: var(--papel-70); }
+
+    .tricolor-mini {
+      width: clamp(180px, 26vw, 340px);
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(to right, var(--amarillo) 0 50%, var(--azul) 50% 75%, var(--rojo) 75% 100%);
+    }
+
+    /* ═══ Slide 2: integrantes ═══ */
+    .integrantes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(.8rem, 2vw, 1.6rem); }
+    .miembro-card {
+      background: rgba(237,228,210,.06); border: 1px solid rgba(237,228,210,.14); border-radius: var(--radio);
+      padding: clamp(.8rem, 2vh, 1.5rem); text-align: left;
+      display: flex; flex-direction: row; align-items: center; gap: clamp(1rem, 2.4vw, 1.6rem);
+    }
+    .miembro-foto {
+      width: clamp(190px, 35vh, 290px); height: clamp(190px, 35vh, 290px); border-radius: 50%;
+      object-fit: cover; margin: 0; flex-shrink: 0;
+      border: 3px solid var(--amarillo); box-shadow: 0 0 30px rgba(206,17,38,.35);
+    }
+    .miembro-info { flex: 1 1 auto; min-width: 0; }
+    .miembro-nombre { font-family: var(--fuente-display); text-transform: uppercase; font-size: clamp(1.4rem, 3.3vh, 1.9rem); color: var(--blanco); }
+    .miembro-rol { font-family: var(--fuente-util); color: var(--amarillo); font-size: clamp(.95rem, 2.1vh, 1.15rem); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin: 4px 0 clamp(.45rem, 1.2vh, .8rem); }
+    .miembro-lista { list-style: none; text-align: left; font-size: clamp(1.02rem, 2.2vh, 1.25rem); color: var(--papel-70); line-height: 1.48; }
+    .miembro-lista li { margin-bottom: 2px; }
+    .miembro-lista b { color: var(--papel); }
+
+    /* Dos columnas texto + imagen — la columna crece para llenar todo el alto disponible de la diapositiva */
+    .dos-col {
+      display: grid; grid-template-columns: 1fr .95fr; grid-template-rows: minmax(0, 1fr); gap: clamp(1.2rem, 3.2vw, 2.6rem); align-items: stretch;
+      width: 100%; flex: 1 1 0; min-height: 0;
+    }
+    .dos-col.invertido { grid-template-columns: .95fr 1fr; }
+    .dos-col img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: var(--radio); box-shadow: var(--sombra);
+      border: 1px solid var(--borde);
+    }
+    .dos-col .col-texto { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: clamp(.4rem, 1.2vh, .8rem); min-height: 0; }
+    .dos-col > .lead { display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+    .logo-corporativo { width: auto; height: clamp(220px, 48vh, 480px); aspect-ratio: 1/1; flex: 0 0 auto; }
+
+    /* Listas con check */
+    .lista-check { list-style: none; display: grid; gap: clamp(.35rem, 1vh, .6rem); text-align: left; }
+    .lista-check li {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(237,228,210,.06); border: 1px solid rgba(237,228,210,.14); border-radius: .9rem;
+      padding: clamp(.55rem, 1.5vh, .9rem) clamp(.9rem, 1.8vw, 1.2rem);
+      font-size: clamp(1.08rem, 2.4vh, 1.4rem); color: var(--papel-70);
+      text-align: left;
+    }
+    .lista-check li::before {
+      content: '✓'; flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--rojo), var(--amarillo)); color: var(--tinta);
+      font-size: .76rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+
+    .objetivo-general {
+      background: linear-gradient(135deg, rgba(206,17,38,.2), rgba(252,209,22,.12));
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      padding: clamp(.9rem, 2.3vh, 1.5rem) clamp(1.2rem, 2.6vw, 1.8rem);
+      font-size: clamp(1.18rem, 2.7vh, 1.55rem);
+      color: var(--papel);
+      line-height: 1.48;
+    }
+    .objetivo-general .etiqueta {
+      display: block; font-family: var(--fuente-util); font-size: clamp(.9rem, 1.9vh, 1.05rem); letter-spacing: .1em;
+      text-transform: uppercase; font-weight: 800; color: var(--amarillo); margin-bottom: 5px;
+    }
+
+    .dos-tarjetas { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.8rem, 2vw, 1.4rem); }
+
+    .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.8rem, 2vw, 1.4rem); }
+    .mv-card {
+      position: relative;
+      background: linear-gradient(160deg, var(--noche-2), var(--noche-3));
+      border: 1px solid var(--borde); border-radius: var(--radio);
+      padding: clamp(.8rem, 2vh, 1.5rem) clamp(.9rem, 2vw, 1.5rem) clamp(.8rem, 2vh, 1.5rem) clamp(1.5rem, 2.8vw, 2.1rem);
+      overflow: hidden;
+    }
+    .mv-card::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 7px;
+      background: linear-gradient(to bottom, var(--amarillo) 0 50%, var(--azul) 50% 75%, var(--rojo) 75% 100%);
+    }
+    .mv-card .mv-icon { font-size: clamp(1.9rem, 4.2vh, 2.7rem); margin-bottom: clamp(.3rem, .8vh, .5rem); display: block; }
+    .mv-card h3 { font-family: var(--fuente-display); text-transform: uppercase; color: var(--amarillo); font-size: clamp(1.4rem, 3.2vh, 1.85rem); margin-bottom: clamp(.35rem, 1vh, .65rem); }
+    .mv-card p { font-size: clamp(1.08rem, 2.4vh, 1.32rem); color: var(--papel-70); line-height: 1.48; }
+
+    .tech-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .tech-chips span {
+      font-family: var(--fuente-util);
+      background: rgba(237,228,210,.05); border: 1px solid var(--borde); color: var(--papel);
+      padding: clamp(.45rem, 1.2vh, .7rem) clamp(.85rem, 1.8vw, 1.2rem); border-radius: 999px;
+      font-size: clamp(1.02rem, 2.2vh, 1.25rem); font-weight: 600; display: inline-flex; align-items: center; gap: 7px;
+    }
+
+    .recursos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.4rem, 1.1vh, .7rem); }
+    .recursos-grid .servicio-bloque { padding: clamp(.45rem, 1.2vh, .8rem) clamp(.7rem, 1.6vw, 1rem); gap: 3px; }
+    .recursos-grid .servicio-bloque .icono { width: clamp(34px, 5.6vh, 46px); height: clamp(34px, 5.6vh, 46px); font-size: clamp(1.1rem, 2.3vh, 1.4rem); margin-bottom: 0; }
+    .recursos-grid .servicio-bloque h3 { font-size: clamp(1.02rem, 2.2vh, 1.3rem); margin-bottom: 0; }
+    .recursos-grid .servicio-bloque p { font-size: clamp(.84rem, 1.7vh, 1rem); line-height: 1.3; }
+
+    /* Informe de costos y gastos */
+    .costos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(1.2rem, 2.6vw, 2.2rem); width: 100%; }
+    .costo-item {
+      display: flex; justify-content: space-between; align-items: baseline; gap: .6rem;
+      border-bottom: 1px solid var(--borde);
+      padding: clamp(.28rem, .75vh, .5rem) 0;
+    }
+    .costo-item .desc { font-family: var(--fuente-util); font-size: clamp(.72rem, 1.5vh, .92rem); color: var(--papel-70); line-height: 1.25; text-align: left; }
+    .costo-item .valor { font-family: var(--fuente-util); font-size: clamp(.76rem, 1.55vh, .95rem); color: var(--papel); font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+    .costos-total {
+      display: flex; justify-content: space-between; align-items: center; width: 100%;
+      background: linear-gradient(135deg, rgba(206,17,38,.22), rgba(252,209,22,.14));
+      border: 1px solid var(--borde); border-radius: var(--radio);
+      padding: clamp(.55rem, 1.5vh, .95rem) clamp(1rem, 2vw, 1.6rem);
+      margin-top: clamp(.3rem, .9vh, .6rem);
+    }
+    .costos-total .etiqueta { font-family: var(--fuente-util); font-size: clamp(.85rem, 1.8vh, 1.1rem); letter-spacing: .08em; text-transform: uppercase; font-weight: 800; color: var(--amarillo); }
+    .costos-total .monto { font-family: var(--fuente-display); font-size: clamp(1.25rem, 2.9vh, 1.8rem); font-weight: 700; color: var(--papel); }
+
+    .servicio-bloque {
+      background: rgba(237,228,210,.06); border: 1px solid rgba(237,228,210,.14); border-radius: var(--radio);
+      padding: clamp(.8rem, 2vh, 1.4rem) clamp(.9rem, 2vw, 1.3rem);
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;
+    }
+    .servicio-bloque .icono {
+      font-size: clamp(1.6rem, 3.4vh, 2.2rem); flex-shrink: 0;
+      width: clamp(48px, 8.2vh, 64px); height: clamp(48px, 8.2vh, 64px);
+      background: linear-gradient(135deg, rgba(206,17,38,.28), rgba(252,209,22,.2));
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    }
+    .servicio-bloque h3 { font-family: var(--fuente-display); text-transform: uppercase; font-size: clamp(1.25rem, 2.8vh, 1.55rem); color: var(--papel); margin-bottom: 3px; }
+    .servicio-bloque p { font-size: clamp(1.02rem, 2.2vh, 1.25rem); color: var(--papel-70); line-height: 1.4; }
+
+    .segmento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(.8rem, 2vw, 1.4rem); }
+    .segmento-card {
+      position: relative;
+      background: linear-gradient(160deg, var(--noche-2), var(--noche-3));
+      border: 1px solid var(--borde); border-radius: var(--radio);
+      padding: clamp(1rem, 2.5vh, 1.7rem) clamp(1rem, 2.5vh, 1.7rem) clamp(1rem, 2.5vh, 1.7rem) clamp(1.7rem, 2.9vw, 2.2rem);
+      overflow: hidden;
+    }
+    .segmento-card::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 7px;
+      background: linear-gradient(to bottom, var(--amarillo) 0 50%, var(--azul) 50% 75%, var(--rojo) 75% 100%);
+    }
+    .segmento-card .icono { font-size: clamp(1.7rem, 3.4vh, 2.2rem); margin-bottom: clamp(.3rem, .8vh, .5rem); display: block; }
+    .segmento-card h3 { font-family: var(--fuente-display); text-transform: uppercase; font-size: clamp(1.2rem, 2.7vh, 1.5rem); color: var(--amarillo); margin-bottom: clamp(.3rem, .8vh, .5rem); }
+    .segmento-card p { font-size: clamp(.98rem, 2.2vh, 1.2rem); color: var(--papel-70); line-height: 1.44; }
+
+    /* Paleta de colores */
+    .paleta-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(.5rem, 1.4vw, .9rem); }
+    .paleta-chip {
+      border-radius: var(--radio); overflow: hidden; border: 1px solid var(--borde);
+      box-shadow: var(--sombra); display: flex; flex-direction: column;
+    }
+    .paleta-chip .swatch { height: clamp(90px, 17vh, 150px); }
+    .paleta-chip .info { background: rgba(4,24,46,.4); padding: clamp(.5rem, 1.2vh, .85rem) clamp(.4rem, 1vw, .6rem); text-align: center; }
+    .paleta-chip .nombre { font-family: var(--fuente-display); text-transform: uppercase; font-size: clamp(.98rem, 2.1vh, 1.2rem); color: var(--papel); font-weight: 700; }
+    .paleta-chip .hex { font-family: var(--fuente-util); font-size: clamp(.8rem, 1.6vh, .95rem); color: var(--papel-70); margin-top: 3px; }
+    .fuentes-row { display: flex; gap: clamp(.8rem, 2vw, 1.5rem); justify-content: center; flex-wrap: wrap; }
+    .fuente-card {
+      background: rgba(237,228,210,.06); border: 1px solid rgba(237,228,210,.14); border-radius: var(--radio);
+      padding: clamp(.7rem, 1.9vh, 1.2rem) clamp(1.1rem, 2.6vw, 1.8rem); text-align: center;
+    }
+    .fuente-card .muestra { font-size: clamp(1.6rem, 3.8vh, 2.4rem); margin-bottom: 3px; }
+    .fuente-card .muestra.display { font-family: var(--fuente-display); text-transform: uppercase; color: var(--amarillo); }
+    .fuente-card .muestra.cuerpo { font-family: var(--fuente-cuerpo); color: var(--papel); }
+    .fuente-card .etiqueta-fuente { font-family: var(--fuente-util); font-size: clamp(.9rem, 1.9vh, 1.05rem); color: var(--papel-70); letter-spacing: .05em; text-transform: uppercase; }
+
+    /* Final / gracias */
+    .final { text-align: center; align-items: center; }
+    .final .logo-final {
+      width: clamp(84px, 15vh, 130px); height: clamp(84px, 15vh, 130px); border-radius: 50%; object-fit: contain; background: var(--noche-2);
+      border: 3px solid var(--amarillo); margin: 0 auto clamp(.4rem, 1vh, .8rem);
+      box-shadow: 0 0 50px rgba(206,17,38,.4);
+    }
+    .final h2 { color: var(--blanco); }
+    .canal-final {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--rojo);
+      color: var(--blanco); padding: clamp(.9rem, 2.3vh, 1.3rem) clamp(1.7rem, 3.4vw, 2.5rem);
+      border-radius: 999px; text-decoration: none; font-family: var(--fuente-util); font-weight: 800;
+      font-size: clamp(1.1rem, 2.4vh, 1.35rem);
+      box-shadow: 0 10px 30px rgba(206,17,38,.4);
+      margin: 0 auto;
+    }
+
+    /* ═══ Controles de navegación ═══ */
+    .nav-controles {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+      padding: clamp(.6rem, 1.6vh, 1rem) 1rem calc(clamp(.6rem, 1.6vh, 1rem) + env(safe-area-inset-bottom, 0px));
+      background: linear-gradient(to top, rgba(2,10,20,.75), transparent);
+    }
+    .nav-btn {
+      width: clamp(32px, 6vh, 40px); height: clamp(32px, 6vh, 40px); border-radius: 50%; border: none;
+      background: linear-gradient(135deg, var(--rojo), var(--amarillo)); color: var(--tinta);
+      font-size: clamp(.9rem, 2vh, 1.1rem); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(206,17,38,.4);
+      transition: transform 0.25s cubic-bezier(0.34,1.5,0.64,1);
+      flex-shrink: 0;
+    }
+    .nav-btn:hover { transform: scale(1.1); }
+    .nav-btn:active { transform: scale(0.92); }
+    .nav-btn.deshabilitado { opacity: 0.3; pointer-events: none; }
+
+    .nav-puntos { display: flex; gap: 5px; flex-wrap: wrap; max-width: 44vw; justify-content: center; }
+    .nav-punto {
+      width: 7px; height: 7px; border-radius: 50%; background: rgba(237,228,210,.25);
+      border: none; cursor: pointer; padding: 0; transition: transform 0.25s, background 0.25s; flex-shrink: 0;
+    }
+    .nav-punto.activo { background: var(--amarillo); transform: scale(1.5); }
+
+    .nav-contador {
+      font-family: var(--fuente-util);
+      font-size: clamp(.6rem, 1.3vh, .72rem); color: var(--papel-70); font-weight: 700;
+      letter-spacing: .05em; min-width: 40px; text-align: center;
+    }
+
+    @media (max-width: 680px) {
+      .integrantes-grid, .dos-tarjetas, .mv-grid, .segmento-grid, .recursos-grid { grid-template-columns: 1fr; }
+      /* En una sola columna, el texto conserva su alto natural y la imagen crece para llenar el resto */
+      .dos-col, .dos-col.invertido { display: flex; flex-direction: column; justify-content: center; gap: .8rem; }
+      .dos-col img { width: 100%; height: auto; flex: 1 1 auto; min-height: 130px; }
+      .dos-col .col-texto, .dos-col > .lead { flex: 0 0 auto; }
+      .logo-corporativo { height: clamp(150px, 34vh, 480px); }
+      .paleta-grid { grid-template-columns: repeat(3, 1fr); }
+      .nav-puntos { max-width: 38vw; }
+      .slide { padding: clamp(3.4rem, 8vh, 4.6rem) 1rem clamp(4.4rem, 11vh, 5.6rem); }
+      .slide h2 { font-size: clamp(1.6rem, 5.6vh, 2.6rem); }
+      .slide-inner { gap: clamp(.5rem, 1.5vh, 1rem); }
+      /* El título de portada escala por vh y puede volverse más ancho que la pantalla en un móvil angosto y alto */
+      .portada-titulo { font-size: clamp(2.2rem, 13vw, 4.2rem); }
+      .portada .subt { font-size: clamp(1.05rem, 4.6vw, 1.4rem); }
+      /* En una columna angosta el texto envuelve mucho más: se reduce para dejarle espacio real a la imagen */
+      .lead { font-size: clamp(.92rem, 2.3vh, 1.18rem); line-height: 1.4; }
+      .tarjeta p { font-size: clamp(1rem, 2.5vh, 1.3rem); }
+
+      /* Tarjetas de integrantes más compactas para caber sin scroll */
+      .integrantes-grid { gap: .6rem; }
+      .miembro-card { padding: .65rem .9rem; gap: .8rem; }
+      .miembro-foto { width: clamp(84px, 16vh, 130px); height: clamp(84px, 16vh, 130px); margin: 0; }
+      .miembro-nombre { font-size: clamp(1rem, 2.3vh, 1.2rem); }
+      .miembro-rol { margin: 2px 0 .4rem; }
+      .miembro-lista { font-size: clamp(.74rem, 1.6vh, .88rem); line-height: 1.35; }
+      .miembro-lista li { margin-bottom: 1px; }
+      .deco-icon { display: none; }
+    }
+
+    /* Móviles angostos (retrato): comprime tarjetas, listas y grillas para que quepan sin recortes,
+       incluso en teléfonos altos donde el envoltorio de texto en una sola columna ya ocupa mucho alto.
+       Se limita por ancho, no por alto, para no aplastar ventanas anchas-pero-bajas (navegador sin pantalla
+       completa, proyector con barra de tareas visible), donde la columna de imagen ya crece dinámicamente arriba. */
+    @media (max-width: 680px) {
+      .slide { padding: clamp(2.8rem, 7vh, 3.8rem) 1.1rem clamp(3.8rem, 9.5vh, 4.8rem); }
+      .slide-inner { gap: clamp(.4rem, 1.2vh, .7rem); }
+      .slide h2 { font-size: clamp(1.35rem, 5.4vh, 2.1rem); line-height: 1.08; }
+      .eyebrow { font-size: clamp(.7rem, 1.9vh, .85rem); }
+      .lead { font-size: clamp(.82rem, 2.2vh, 1rem); line-height: 1.42; }
+      .tarjeta { padding: .65rem .9rem .65rem 1.15rem; }
+      .tarjeta p { font-size: clamp(.8rem, 2vh, .96rem); line-height: 1.4; }
+      .tarjeta h3 { font-size: clamp(.92rem, 2.4vh, 1.08rem); margin-bottom: .3rem; }
+      .dos-tarjetas { gap: .6rem; }
+      .dos-col img { min-height: 90px; }
+      .tech-chips span { font-size: clamp(.72rem, 1.9vh, .88rem); padding: .32rem .6rem; }
+      .miembro-lista { font-size: clamp(.7rem, 1.8vh, .82rem); }
+      .miembro-foto { width: clamp(72px, 14vh, 110px); height: clamp(72px, 14vh, 110px); margin: 0; }
+      .miembro-nombre { font-size: clamp(1rem, 2.4vh, 1.2rem); }
+      .miembro-rol { font-size: clamp(.72rem, 1.8vh, .85rem); margin: 2px 0 .35rem; }
+      .objetivo-general { padding: .55rem .85rem; font-size: clamp(.85rem, 2vh, 1rem); }
+      .objetivo-general .etiqueta { font-size: .7rem; }
+      .lista-check { gap: .3rem; }
+      .lista-check li { padding: .4rem .7rem; font-size: clamp(.8rem, 1.9vh, .95rem); gap: 8px; }
+      .mv-card, .segmento-card { padding: .6rem .8rem .6rem 1.05rem; }
+      .mv-card .mv-icon, .segmento-card .icono { font-size: clamp(1.2rem, 2.8vh, 1.6rem); margin-bottom: .25rem; }
+      .mv-card h3, .segmento-card h3 { font-size: clamp(1.05rem, 2.4vh, 1.25rem); margin-bottom: .25rem; }
+      .mv-card p, .segmento-card p { font-size: clamp(.78rem, 1.9vh, .92rem); line-height: 1.35; }
+      .servicio-bloque { padding: .35rem .6rem; gap: 2px; }
+      .servicio-bloque .icono { width: clamp(26px, 4.6vh, 34px); height: clamp(26px, 4.6vh, 34px); font-size: clamp(.95rem, 2vh, 1.15rem); margin-bottom: 0; }
+      .servicio-bloque h3 { font-size: clamp(.88rem, 2vh, 1.02rem); margin-bottom: 0; }
+      .servicio-bloque p { font-size: clamp(.7rem, 1.6vh, .8rem); line-height: 1.26; }
+      .recursos-grid { grid-template-columns: 1fr 1fr; gap: .35rem; }
+      .recursos-grid .servicio-bloque { padding: .3rem .4rem; gap: 2px; }
+      .recursos-grid .servicio-bloque .icono { width: 24px; height: 24px; font-size: .82rem; }
+      .recursos-grid .servicio-bloque h3 { font-size: .8rem; }
+      .recursos-grid .servicio-bloque p { font-size: .66rem; line-height: 1.2; }
+      .costos-grid { gap: 0 .7rem; }
+      .costo-item { padding: .18rem 0; gap: .3rem; }
+      .costo-item .desc { font-size: .64rem; line-height: 1.15; }
+      .costo-item .valor { font-size: .66rem; }
+      .costos-total { padding: .4rem .7rem; }
+      .costos-total .etiqueta { font-size: .68rem; }
+      .costos-total .monto { font-size: 1.05rem; }
+      .paleta-grid { gap: .4rem; }
+      .paleta-chip .swatch { height: 46px; }
+      .paleta-chip .info { padding: .3rem .3rem; }
+      .paleta-chip .nombre { font-size: .78rem; }
+      .paleta-chip .hex { font-size: .66rem; margin-top: 1px; }
+      .fuentes-row { gap: .5rem; }
+      .fuente-card { padding: .45rem .8rem; }
+      .fuente-card .muestra { font-size: 1.2rem; margin-bottom: 1px; }
+      .fuente-card .etiqueta-fuente { font-size: .68rem; }
+      .deco-icon { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="deck" id="deck">
+
+    <!-- ═══ 1. PORTADA ═══ -->
+    <section class="slide" data-bg="1">
+      <div class="slide-inner portada">
+        <div class="portada-logo-wrap">
+          <div class="portada-ring" aria-hidden="true"></div>
+          <img class="portada-logo" src="../assets/img/logo-proyecto.png" alt="Orgullo y Memoria" />
+        </div>
+        <p class="eyebrow"><span class="rec-dot"></span> SUSTENTACIÓN DE PROYECTO · SENA / IEDP</p>
+        <h1 class="portada-titulo">
+          <span class="linea">Orgullo</span>
+          <span class="conector">y</span>
+          <span class="linea acento">Memoria</span>
+        </h1>
+        <p class="subt">El canal de YouTube que documenta la historia de Colombia</p>
+        <div class="tricolor-mini" aria-hidden="true"></div>
+        <p class="portada-footer">Técnica en Integración de Contenidos Digitales · Institución Educativa La Divina Pastora · Cúcuta</p>
+      </div>
+    </section>
+
+    <!-- ═══ 2. INTEGRANTES ═══ -->
+    <section class="slide" data-bg="2">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 01 — El equipo</p>
+        <h2>Integrantes</h2>
+        <div class="integrantes-grid">
+          <div class="miembro-card">
+            <img class="miembro-foto" src="../secciones/quienes-somos/fotos/paula.jpg" alt="Paula Jhoanna Castellanos Sánchez" />
+            <div class="miembro-info">
+              <div class="miembro-nombre">Paula Castellanos</div>
+              <div class="miembro-rol">Dirección, guion y presentación</div>
+              <ul class="miembro-lista">
+                <li><b>Formación:</b> Estudiante de grado 10°</li>
+                <li><b>Habilidades:</b> Habla en público, carismática, buena oratoria</li>
+                <li><b>Conocimientos:</b> Photoshop, edición de video, escenografía, redacción de libretos, manejo de redes sociales</li>
+              </ul>
+            </div>
+          </div>
+          <div class="miembro-card">
+            <img class="miembro-foto" src="../secciones/quienes-somos/fotos/stiven.jpg" alt="Andrés Stiven León Pacheco" />
+            <div class="miembro-info">
+              <div class="miembro-nombre">Stiven León Pacheco</div>
+              <div class="miembro-rol">Cámara y edición</div>
+              <ul class="miembro-lista">
+                <li><b>Habilidades:</b> Buen manejo de luces y edición de video</li>
+                <li><b>Se encarga de:</b> fotografía, sonido y montaje final de cada episodio</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 3. NECESIDAD E IDEA ═══ -->
+    <section class="slide" data-bg="3">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 02 — El punto de partida</p>
+        <h2>Descripción de la <em>necesidad e idea</em></h2>
+        <div class="dos-tarjetas">
+          <div class="tarjeta">
+            <h3>🔍 La necesidad</h3>
+            <p>En nuestra institución identificamos la necesidad de fortalecer el aprendizaje con herramientas más dinámicas. Los contenidos tradicionales dificultan captar el interés de los jóvenes y limitan el desarrollo de sus habilidades digitales.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>💡 Nuestra propuesta</h3>
+            <p>Un canal de YouTube con mini-documentales históricos que combina investigación, guion y video para que aprender sobre nuestra historia sea más participativo, visual y fácil de comprender.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 4. IDEA DE SOLUCIÓN INNOVADORA ═══ -->
+    <section class="slide" data-bg="4">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 03 — Nuestra propuesta</p>
+        <h2>Idea de solución <em>innovadora</em></h2>
+        <div class="dos-col">
+          <div class="col-texto">
+            <p class="lead">Creamos el proyecto con herramientas digitales fáciles de manejar —editores de video, imagen y animación— para convertir la historia y las ciencias sociales en contenido llamativo, claro y entretenido.</p>
+            <p class="lead">Es valioso porque hace que aprender sea más interesante: en vez de materiales tradicionales, los estudiantes tienen un recurso atractivo que ayuda a entender los temas y, de paso, desarrolla sus habilidades digitales.</p>
+          </div>
+          <img src="../secciones/galeria/fotos/grabando.jpg" alt="Grabando frente al fondo verde para un episodio de Orgullo y Memoria" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 5. OBJETIVOS ═══ -->
+    <section class="slide" data-bg="5">
+      <span class="deco-icon" aria-hidden="true" style="top:10%; left:6%; animation-delay:.2s;">🎬</span>
+      <span class="deco-icon" aria-hidden="true" style="bottom:14%; right:7%; animation-delay:1.4s;">📜</span>
+      <span class="deco-icon" aria-hidden="true" style="top:14%; right:9%; font-size:clamp(1.3rem,3vh,2rem); animation-delay:2.4s;">🎥</span>
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 04 — Hacia dónde vamos</p>
+        <h2>Objetivos</h2>
+        <div class="objetivo-general">
+          <span class="etiqueta">🎯 Objetivo general</span>
+          Crear contenido audiovisual histórico que despierte el interés de los estudiantes por la historia y las ciencias sociales de Colombia.
+        </div>
+        <p style="font-family:var(--fuente-util); font-size:clamp(.95rem,2vh,1.15rem); letter-spacing:.1em; text-transform:uppercase; font-weight:800; color:var(--amarillo);">Objetivos específicos</p>
+        <ul class="lista-check">
+          <li>Identificar los temas o contenidos que se deben transformar en recursos digitales</li>
+          <li>Seleccionar y usar herramientas digitales adecuadas para crear videos, imágenes y animaciones</li>
+          <li>Elaborar materiales interactivos que motiven a los estudiantes y fortalezcan su comprensión de los temas</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ 6. JUSTIFICACIÓN ═══ -->
+    <section class="slide" data-bg="6">
+      <span class="deco-icon" aria-hidden="true" style="top:12%; right:6%; animation-delay:.6s;">📖</span>
+      <span class="deco-icon" aria-hidden="true" style="bottom:16%; left:7%; animation-delay:1.8s;">🎬</span>
+      <span class="deco-icon" aria-hidden="true" style="bottom:12%; right:11%; font-size:clamp(1.3rem,3vh,2rem); animation-delay:3s;">📖</span>
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 05 — Por qué vale la pena</p>
+        <h2>Justificación</h2>
+        <div class="tarjeta">
+          <p>
+            Este proyecto surge de la necesidad de innovar en los procesos educativos, ofreciendo una forma más dinámica y atractiva de acceder al conocimiento. Aprovechamos las herramientas tecnológicas para transformar los contenidos académicos en recursos interactivos que facilitan la comprensión y fortalecen las competencias digitales — fomentando la creatividad, la motivación y la participación activa de los estudiantes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 7. MISIÓN Y VISIÓN ═══ -->
+    <section class="slide" data-bg="7">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 06 — Nuestra identidad</p>
+        <h2>Misión &amp; Visión</h2>
+        <div class="mv-grid">
+          <div class="mv-card">
+            <span class="mv-icon">🎯</span>
+            <h3>Nuestra Misión</h3>
+            <p>Crear videos entretenidos y didácticos que ayuden a los estudiantes a comprender con más facilidad los temas de historia y ciencias sociales, para que entiendan lo importante que es conocer nuestra propia historia como país.</p>
+          </div>
+          <div class="mv-card">
+            <span class="mv-icon">🔭</span>
+            <h3>Nuestra Visión</h3>
+            <p>Llegar a ser un canal reconocido que transforme la percepción de estos temas entre los estudiantes, y apoye a los docentes a enseñarlos de manera más actualizada y con información confiable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 8. TECNOLOGÍAS ═══ -->
+    <section class="slide" data-bg="8">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 07 — Cómo lo hacemos</p>
+        <h2>Tecnologías a <em>emplear</em></h2>
+        <div class="dos-col invertido">
+          <img src="../secciones/galeria/fotos/edicion-de-videos.jpg" alt="Editando los videos en la sala de sistemas" />
+          <div class="col-texto">
+            <p class="lead">Software de edición, diseño y publicación con el que grabamos, montamos y difundimos cada episodio:</p>
+            <div class="tech-chips">
+              <span>✂️ CapCut</span>
+              <span>🅰️ Adobe Photoshop</span>
+              <span>🎨 Adobe Illustrator</span>
+              <span>📷 Instagram</span>
+              <span>📘 Facebook</span>
+              <span>🎵 TikTok</span>
+              <span>🖌️ Canva</span>
+              <span>💻 Visual Studio Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 9. RECURSOS ═══ -->
+    <section class="slide" data-bg="9">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 08 — Lo que necesitamos</p>
+        <h2>Recursos</h2>
+        <div class="recursos-grid">
+          <div class="servicio-bloque"><span class="icono">🖥️</span><div><h3>Equipos</h3><p>Computadores y portátiles para la creación de los contenidos digitales.</p></div></div>
+          <div class="servicio-bloque"><span class="icono">🌐</span><div><h3>Internet</h3><p>Acceso estable para investigar y publicar los materiales.</p></div></div>
+          <div class="servicio-bloque"><span class="icono">🎬</span><div><h3>Software de edición</h3><p>Canva, CapCut, Filmora y Photoshop para video, imagen y animación.</p></div></div>
+          <div class="servicio-bloque"><span class="icono">🎥</span><div><h3>Cámaras y audio</h3><p>Celulares de buena resolución, más micrófonos y audífonos para el sonido.</p></div></div>
+          <div class="servicio-bloque"><span class="icono">📚</span><div><h3>Material de apoyo</h3><p>Libros, documentos y guías académicas para la investigación histórica.</p></div></div>
+          <div class="servicio-bloque"><span class="icono">🏫</span><div><h3>Espacio colaborativo</h3><p>Un lugar de trabajo dentro de la institución para grabar y editar en equipo.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 10. PRODUCTOS Y SERVICIOS ═══ -->
+    <section class="slide" data-bg="10">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 09 — Lo que vamos a construir</p>
+        <h2>Descripción de <em>productos y servicios</em></h2>
+        <div class="dos-col">
+          <div class="col-texto" style="align-items: stretch;">
+            <div class="servicio-bloque">
+              <span class="icono">📺</span>
+              <div><h3>Canal de YouTube</h3><p>Mini-documentales históricos sobre la región y el país, narrados con guion propio y lenguaje cercano a los estudiantes.</p></div>
+            </div>
+            <div class="servicio-bloque">
+              <span class="icono">🌐</span>
+              <div><h3>Sitio web</h3><p>Artículos complementarios, la galería del detrás de cámaras y el archivo de todos los episodios publicados.</p></div>
+            </div>
+          </div>
+          <img src="../secciones/galeria/fotos/equipo-de-trabajo.jpg" alt="Paula y Stiven, el equipo detrás de Orgullo y Memoria" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 11. IMAGEN CORPORATIVA ═══ -->
+    <section class="slide" data-bg="11">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 10 — Nuestra marca</p>
+        <h2>Imagen <em>Corporativa</em></h2>
+        <div class="dos-col">
+          <p class="lead">
+            El rojo, el amarillo y el azul son los colores de la bandera de Colombia: desde el primer segundo avisan de qué va a tratar el canal, porque cualquier colombiano los reconoce. El escudo nacional y el cóndor —símbolos patrios— refuerzan que esta es, ante todo, una historia sobre Colombia.
+          </p>
+          <img class="logo-corporativo" src="../assets/img/logo-proyecto.png" alt="Logo de Orgullo y Memoria" style="background:var(--noche-2); padding:1.2rem; border-radius:50%; object-fit:contain; margin:0 auto; align-self:center; justify-self:center;" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 12. SEGMENTO OBJETIVO ═══ -->
+    <section class="slide" data-bg="12">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 11 — A quién llegamos</p>
+        <h2>Segmento <em>Objetivo</em></h2>
+        <div class="segmento-grid">
+          <div class="segmento-card">
+            <span class="icono">🌎</span>
+            <h3>Ubicación</h3>
+            <p>Colombia y todos los departamentos que la conforman.</p>
+          </div>
+          <div class="segmento-card">
+            <span class="icono">🎓</span>
+            <h3>Perfil</h3>
+            <p>Sin un rango de edad fijo: cualquier persona que quiera aprender nuestra historia, con foco en estudiantes de colegios colombianos.</p>
+          </div>
+          <div class="segmento-card">
+            <span class="icono">✨</span>
+            <h3>Ventajas competitivas</h3>
+            <p>Narrativa envolvente apoyada en animaciones, rescate del patrimonio local e investigación con fuentes verídicas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 13. PROCESO PRODUCTIVO ═══ -->
+    <section class="slide" data-bg="13">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 12 — Cómo se hace cada episodio</p>
+        <h2>Proceso <em>productivo</em></h2>
+        <ul class="lista-check">
+          <li>Investigación bibliográfica y redacción de guiones históricos</li>
+          <li>Grabación de la locución en voz en off y búsqueda o creación de material de archivo y animación</li>
+          <li>Edición del video documental y diseño de la miniatura en Photoshop</li>
+          <li>Publicación en YouTube con SEO y sincronización con el sitio web</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ 14. PALETA DE COLORES Y ESTILO ═══ -->
+    <section class="slide" data-bg="14">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 13 — Nuestra identidad visual</p>
+        <h2>Paleta de <em>colores y estilo</em></h2>
+        <p class="lead" style="max-width:56rem;">Los colores de la bandera de Colombia sobre un fondo de archivo nocturno: la estética de un expediente histórico, con tipografía condensada en mayúsculas para los títulos.</p>
+        <div class="paleta-grid">
+          <div class="paleta-chip"><div class="swatch" style="background:#FCD116;"></div><div class="info"><div class="nombre">Amarillo</div><div class="hex">#FCD116</div></div></div>
+          <div class="paleta-chip"><div class="swatch" style="background:#003893;"></div><div class="info"><div class="nombre">Azul</div><div class="hex">#003893</div></div></div>
+          <div class="paleta-chip"><div class="swatch" style="background:#CE1126;"></div><div class="info"><div class="nombre">Rojo</div><div class="hex">#CE1126</div></div></div>
+          <div class="paleta-chip"><div class="swatch" style="background:#04182E;"></div><div class="info"><div class="nombre">Noche</div><div class="hex">#04182E</div></div></div>
+          <div class="paleta-chip"><div class="swatch" style="background:#EDE4D2;"></div><div class="info"><div class="nombre">Papel</div><div class="hex">#EDE4D2</div></div></div>
+          <div class="paleta-chip"><div class="swatch" style="background:#101418;"></div><div class="info"><div class="nombre">Tinta</div><div class="hex">#101418</div></div></div>
+        </div>
+        <div class="fuentes-row">
+          <div class="fuente-card"><div class="muestra display">Archivo Black</div><div class="etiqueta-fuente">Tipografía de títulos</div></div>
+          <div class="fuente-card"><div class="muestra cuerpo">Source Serif 4</div><div class="etiqueta-fuente">Tipografía de texto</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 15. INFORME DE COSTOS Y GASTOS ═══ -->
+    <section class="slide" data-bg="15">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 14 — Presupuesto compartido con Academia Sonora</p>
+        <h2>Informe de <em>costos y gastos</em></h2>
+        <div class="costos-grid">
+          <div class="costo-item"><span class="desc">Cámara Sony ZV-E10</span><span class="valor">$3.375.962</span></div>
+          <div class="costo-item"><span class="desc">Tarjeta SD ADATA 128GB (x2)</span><span class="valor">$211.098</span></div>
+          <div class="costo-item"><span class="desc">Trípode Beston BST-717</span><span class="valor">$1.277.837</span></div>
+          <div class="costo-item"><span class="desc">Batería recargable de la cámara</span><span class="valor">$365.811</span></div>
+          <div class="costo-item"><span class="desc">Cargador de batería para cámara</span><span class="valor">$472.469</span></div>
+          <div class="costo-item"><span class="desc">Grabadora Tascam DR-05XP</span><span class="valor">$1.072.498</span></div>
+          <div class="costo-item"><span class="desc">Memoria para grabadora de audio</span><span class="valor">$76.923</span></div>
+          <div class="costo-item"><span class="desc">Micrófonos de solapa inalámbricos</span><span class="valor">$1.430.473</span></div>
+          <div class="costo-item"><span class="desc">Audífonos Behringer BH470</span><span class="valor">$327.012</span></div>
+          <div class="costo-item"><span class="desc">Cargador de pilas Beston BSTC8006B</span><span class="valor">$69.606</span></div>
+          <div class="costo-item"><span class="desc">Set de pilas recargables AA/AAA</span><span class="valor">$152.541</span></div>
+          <div class="costo-item"><span class="desc">Micrófono Boom</span><span class="valor">$1.296.443</span></div>
+          <div class="costo-item"><span class="desc">Portátil HP + licencia</span><span class="valor">$2.615.330</span></div>
+          <div class="costo-item"><span class="desc">Disco duro externo 2TB</span><span class="valor">$393.852</span></div>
+        </div>
+        <div class="costos-total">
+          <span class="etiqueta">Total invertido</span>
+          <span class="monto">$13.137.855</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 16. INFORME DE GANANCIAS O PÉRDIDAS ═══ -->
+    <section class="slide" data-bg="16">
+      <div class="slide-inner">
+        <p class="eyebrow">Expediente 15 — Balance del proyecto</p>
+        <h2>Informe de <em>ganancias o pérdidas</em></h2>
+        <div class="dos-tarjetas">
+          <div class="tarjeta">
+            <h3>❤️ Valor pedagógico</h3>
+            <p>La verdadera ganancia de este proyecto no es económica: es que la historia de Colombia —esa que debe ser escuchada y recordada— llegue a los estudiantes y a la comunidad en un formato cercano, hecho por y para jóvenes, en el canal de YouTube.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>🌱 Continuidad y futuro</h3>
+            <p>Orgullo y Memoria nace con vocación de permanencia: la idea es que este proyecto no muera aquí, sino que se convierta en un espacio que continúen futuras generaciones e iniciativas del área de Ciencias Sociales de la institución.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 17. CIERRE ═══ -->
+    <section class="slide" data-bg="17">
+      <div class="slide-inner final">
+        <img class="logo-final" src="../assets/img/logo-proyecto.png" alt="Orgullo y Memoria" />
+        <p class="eyebrow"><span class="rec-dot"></span> GRACIAS POR SU ATENCIÓN</p>
+        <h2>¡Gracias!</h2>
+        <p class="subt">Orgullo y Memoria — la historia de Colombia que debe ser escuchada y recordada.<br>Técnica en Integración de Contenidos Digitales · SENA, IEDP La Divina Pastora.</p>
+        <a class="canal-final" href="https://www.youtube.com/@orgulloymemoria" target="_blank" rel="noopener noreferrer">▶ @orgulloymemoria</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ═══ Controles de navegación ═══ -->
+  <div class="nav-controles">
+    <button class="nav-btn" id="btnPrev" aria-label="Diapositiva anterior">‹</button>
+    <div class="nav-puntos" id="navPuntos"></div>
+    <button class="nav-btn" id="btnNext" aria-label="Siguiente diapositiva">›</button>
+    <span class="nav-contador" id="navContador">1 / 17</span>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const total = slides.length;
+    let actual = 0;
+
+    const puntosWrap = document.getElementById('navPuntos');
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'nav-punto' + (i === 0 ? ' activo' : '');
+      btn.setAttribute('aria-label', `Ir a la diapositiva ${i + 1}`);
+      btn.addEventListener('click', () => irA(i));
+      puntosWrap.appendChild(btn);
+    });
+    const puntos = Array.from(document.querySelectorAll('.nav-punto'));
+
+    function actualizarUI() {
+      puntos.forEach((p, i) => p.classList.toggle('activo', i === actual));
+      document.getElementById('navContador').textContent = `${actual + 1} / ${total}`;
+      document.getElementById('btnPrev').classList.toggle('deshabilitado', actual === 0);
+      document.getElementById('btnNext').classList.toggle('deshabilitado', actual === total - 1);
+    }
+
+    function irA(indice) {
+      indice = Math.max(0, Math.min(total - 1, indice));
+      if (indice === actual) return;
+      const direccion = indice > actual ? 1 : -1;
+
+      slides.forEach((s, i) => {
+        s.classList.remove('activa', 'saliendo-izq', 'saliendo-der');
+        if (i === actual) {
+          s.classList.add(direccion > 0 ? 'saliendo-izq' : 'saliendo-der');
+        }
+      });
+
+      actual = indice;
+      slides[actual].classList.add('activa');
+      actualizarUI();
+    }
+
+    slides[0].classList.add('activa');
+    actualizarUI();
+
+    document.getElementById('btnPrev').addEventListener('click', () => irA(actual - 1));
+    document.getElementById('btnNext').addEventListener('click', () => irA(actual + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') irA(actual + 1);
+      if (e.key === 'ArrowLeft') irA(actual - 1);
+    });
+
+    /* Navegación táctil (swipe horizontal) */
+    let touchStartX = 0, touchStartY = 0;
+    const deck = document.getElementById('deck');
+
+    deck.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    deck.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) irA(actual + 1); else irA(actual - 1);
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

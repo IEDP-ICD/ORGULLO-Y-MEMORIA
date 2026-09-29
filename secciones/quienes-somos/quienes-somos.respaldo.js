@@ -3,8 +3,8 @@
 window.RESPALDO = window.RESPALDO || {};
 window.RESPALDO.quienesSomos = {
   "introduccion": "Somos dos estudiantes de la Técnica en Integración de Contenidos Digitales. Grabamos, editamos y publicamos historias de nuestra región con los equipos del colegio y lo aprendido en la formación con el SENA.",
-  "mision": "Crear contenidos digitales innovadores de historia y ciencias sociales para despertar el interés estudiantil, fortalecer competencias digitales y difundir la memoria colectiva en redes.",
-  "vision": "Ser el referente educativo digital donde los estudiantes crean, comparten y viven la historia con pasión, orgullo identitario y pensamiento crítico, consolidando una memoria colectiva viva y accesible.",
+  "mision": "Crear videos entretenidos y didácticos que ayuden a los estudiantes a comprender con más facilidad los temas de historia y ciencias sociales, para que entiendan lo importante que es conocer nuestra propia historia como país.",
+  "vision": "Llegar a ser un canal reconocido que transforme la percepción de estos temas entre los estudiantes, y apoye a los docentes a enseñarlos de manera más actualizada y con información confiable.",
   "integrantes": [
     {
       "nombre": "Paula Castellanos",
