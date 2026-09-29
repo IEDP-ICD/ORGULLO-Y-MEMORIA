@@ -371,6 +371,19 @@
     }
     .equipo-tecnico-card span { font-family: var(--fuente-util); font-size: clamp(.8rem, 1.6vh, .98rem); color: var(--papel-70); text-align: center; font-weight: 600; max-width: 10rem; line-height: 1.25; }
 
+    /* Panel de códigos QR — grandes, para escanear en vivo durante la exposición */
+    .qr-panel { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: clamp(1.6rem, 4.5vw, 3.4rem); width: 100%; flex: 1 1 0; min-height: 0; }
+    .qr-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(.6rem, 1.6vh, 1rem); height: 100%; }
+    .qr-card img {
+      width: auto; height: clamp(230px, 48vh, 500px); max-width: 92%;
+      border-radius: 1rem; box-shadow: var(--sombra); border: 1px solid var(--borde);
+    }
+    .qr-card span {
+      font-family: var(--fuente-util); font-weight: 700;
+      font-size: clamp(1.05rem, 2.4vh, 1.4rem); line-height: 1.32; color: var(--papel);
+      text-align: center; max-width: 19rem;
+    }
+
     /* Informe de costos y gastos */
     .costos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(1.2rem, 2.6vw, 2.2rem); width: 100%; }
     .costo-item {
@@ -562,6 +575,9 @@
       .equipo-tecnico-grid { gap: .5rem; }
       .equipo-tecnico-card img { width: clamp(58px, 16vw, 95px); height: clamp(77px, 21vw, 127px); }
       .equipo-tecnico-card span { font-size: .64rem; max-width: 6rem; line-height: 1.15; }
+      .qr-panel { gap: 1rem; }
+      .qr-card img { height: clamp(150px, 40vw, 260px); }
+      .qr-card span { font-size: .82rem; max-width: 9.5rem; }
       .costos-grid { gap: 0 .7rem; }
       .costo-item { padding: .18rem 0; gap: .3rem; }
       .costo-item .desc { font-size: .64rem; line-height: 1.15; }
@@ -790,18 +806,16 @@
       <div class="slide-inner">
         <p class="eyebrow">Expediente 09 — Lo que vamos a construir</p>
         <h2>Descripción de <em>productos y servicios</em></h2>
-        <div class="dos-col">
-          <div class="col-texto" style="align-items: stretch;">
-            <div class="servicio-bloque">
-              <span class="icono">📺</span>
-              <div><h3>Canal de YouTube</h3><p>Mini-documentales históricos sobre la región y el país, narrados con guion propio y lenguaje cercano a los estudiantes.</p></div>
-            </div>
-            <div class="servicio-bloque">
-              <span class="icono">🌐</span>
-              <div><h3>Sitio web</h3><p>Artículos complementarios, la galería del detrás de cámaras y el archivo de todos los episodios publicados.</p></div>
-            </div>
+        <p class="lead" style="max-width:56rem;">Canal de YouTube con mini-documentales históricos sobre la región y el país, y sitio web con artículos complementarios, la galería del detrás de cámaras y el archivo de todos los episodios.</p>
+        <div class="qr-panel">
+          <div class="qr-card">
+            <img src="img/qr-canal.jpg" alt="Código QR al canal de YouTube de Orgullo y Memoria" />
+            <span>📺 Escanea y mira nuestro canal en YouTube</span>
           </div>
-          <img src="../secciones/galeria/fotos/equipo-de-trabajo.jpg" alt="Paula y Stiven, el equipo detrás de Orgullo y Memoria" />
+          <div class="qr-card">
+            <img src="img/qr-sitio.jpg" alt="Código QR al sitio web de Orgullo y Memoria" />
+            <span>🌐 Escanea y visita nuestro sitio web</span>
+          </div>
         </div>
       </div>
     </section>
